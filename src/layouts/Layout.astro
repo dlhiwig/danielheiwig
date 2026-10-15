@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "AI Engineer and Technology Leader specializing in enterprise artificial intelligence, agentic systems, and applied AI." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Daniel Heiwig</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class="bg-white text-slate-800 antialiased">
+    <header class="border-b border-slate-200">
+      <nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="text-xl font-semibold tracking-tight text-slate-900">Daniel Heiwig</a>
+        <div class="flex gap-6 text-sm font-medium">
+          <a href="/about" class="hover:text-blue-700">About</a>
+          <a href="/experience" class="hover:text-blue-700">Experience</a>
+          <a href="/projects" class="hover:text-blue-700">Projects</a>
+          <a href="/publications" class="hover:text-blue-700">Publications</a>
+          <a href="/contact" class="hover:text-blue-700">Contact</a>
+        </div>
+      </nav>
+    </header>
+    <main class="max-w-5xl mx-auto px-6 py-12">
+      <slot />
+    </main>
+    <footer class="border-t border-slate-200 mt-16">
+      <div class="max-w-5xl mx-auto px-6 py-8 text-sm text-slate-500">
+        <p>© {new Date().getFullYear()} Daniel Heiwig. All rights reserved.</p>
+        <p class="mt-1">Professional views are personal and do not represent any institution or organization.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": "https://danielheiwig.com/about",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://danielheiwig.com/about#person",
+    "name": "Daniel Heiwig",
+    "alternateName": "Daniel Louis Heiwig",
+    "givenName": "Daniel",
+    "additionalName": "Louis",
+    "familyName": "Heiwig",
+    "description": "AI engineer and technology leader specializing in enterprise artificial intelligence, agentic systems, data modernization, and applied AI implementation.",
+    "jobTitle": "AI Engineer and Technology Leader",
+    "url": "https://danielheiwig.com",
+    "sameAs": [
+      "https://github.com/dlhiwig",
+      "https://x.com/DHiwig"
+    ],
+    "knowsAbout": [
+      "Artificial Intelligence",
+      "Agentic AI Systems",
+      "Enterprise AI",
+      "Data Modernization",
+      "Strategic Leadership"
+    ]
+  }
+};
+---
+
+<Layout title="About" description="Biography and professional background of Daniel Heiwig, AI Engineer and Technology Leader.">
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <h1 class="text-3xl font-semibold text-slate-900">About</h1>
+  <p class="mt-2 text-slate-500">Daniel Louis Heiwig</p>
+
+  <div class="mt-8 prose prose-slate max-w-none">
+    <p>
+      Daniel Heiwig is an AI engineer and technology leader specializing in enterprise artificial intelligence systems, data modernization, and applied artificial intelligence.
+    </p>
+    <p>
+      His professional interests include large language models, agentic AI, local AI infrastructure, enterprise data integration, and the practical implementation of AI-enabled capabilities.
+    </p>
+    <p>
+      His work focuses on connecting emerging technologies with organizational requirements to produce measurable operational and business outcomes.
+    </p>
+  </div>
+
+  <section class="mt-12">
+    <h2 class="text-xl font-semibold text-slate-900">Professional Focus</h2>
+    <ul class="mt-4 space-y-2 text-slate-600">
+      <li>Artificial intelligence engineering and agentic systems</li>
+      <li>Enterprise AI modernization and data integration</li>
+      <li>Technical leadership and organizational transformation</li>
+    </ul>
+  </section>
+</Layout>
