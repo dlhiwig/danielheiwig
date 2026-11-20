@@ -9,7 +9,11 @@ export const Route = createFileRoute("/writing_/$slug")({
       meta: [
         { title: essay ? `${essay.title} · Daniel Heiwig` : "Writing · Daniel Heiwig" },
         { name: "description", content: essay?.dek ?? "Essay" },
+        ...(!essay ? [{ name: "robots", content: "noindex, follow" }] : []),
       ],
+      links: essay
+        ? [{ rel: "canonical", href: `https://www.danielheiwig.com/writing/${essay.slug}` }]
+        : [],
     };
   },
   component: EssayPage,

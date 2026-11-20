@@ -143,7 +143,7 @@ export const essays: Essay[] = [
 export const brandTitle = "Daniel Heiwig | Data. Insight. AI. Impact.";
 
 export const brandDescription =
-  "Daniel Heiwig explores AI engineering, digital government, leadership, and practical technology innovation.";
+  "Explore Daniel Heiwig's work in AI engineering, autonomous agents, digital government, technology leadership, and independently developed projects.";
 
 export const portraitSrc = "/daniel-heiwig-ai-engineering.jpg";
 
@@ -218,13 +218,13 @@ export function personSchema(pageUrl: string) {
     url: pageUrl,
     mainEntity: {
       "@type": "Person",
-      "@id": "https://danielheiwig.com/#person",
+      "@id": "https://www.danielheiwig.com/#person",
       name: "Daniel Heiwig",
       alternateName: "Daniel Louis Heiwig",
       description: brandDescription,
       jobTitle: "AI Engineer and Technology Leader",
-      image: "https://danielheiwig.com/daniel-heiwig-ai-engineering.jpg",
-      url: "https://danielheiwig.com/",
+      image: "https://www.danielheiwig.com/daniel-heiwig-ai-engineering.jpg",
+      url: "https://www.danielheiwig.com/",
       sameAs,
     },
   };
@@ -236,4 +236,16 @@ export function projectBySlug(slug: string) {
 
 export function essayBySlug(slug: string) {
   return essays.find((item) => item.slug === slug);
+}
+
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://www.danielheiwig.com/#website",
+    url: "https://www.danielheiwig.com/",
+    name: "Daniel Heiwig",
+    description: brandDescription,
+    publisher: { "@id": "https://www.danielheiwig.com/#person" },
+  };
 }

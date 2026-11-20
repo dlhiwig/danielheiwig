@@ -10,6 +10,7 @@ export const Route = createFileRoute("/ventures")({
         content: "Citrati.ai and other personal commercial work, kept separate from public service.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.danielheiwig.com/ventures" }],
   }),
   component: Ventures,
 });

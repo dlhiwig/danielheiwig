@@ -6,7 +6,7 @@ import {
   brandDescription,
   brandTitle,
   essays,
-  personSchema,
+  websiteSchema,
   portraitAlt,
   portraitSrc,
   projects,
@@ -19,11 +19,11 @@ export const Route = createFileRoute("/")({
       { title: brandTitle },
       { name: "description", content: brandDescription },
     ],
-    links: [{ rel: "canonical", href: "https://danielheiwig.com/" }],
+    links: [{ rel: "canonical", href: "https://www.danielheiwig.com/" }],
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify(personSchema("https://danielheiwig.com/")),
+        children: JSON.stringify(websiteSchema()),
       },
     ],
   }),
@@ -74,6 +74,9 @@ function Home() {
                 alt={portraitAlt}
                 width={1254}
                 height={1254}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
                 className="h-112 w-full object-cover object-top md:h-128"
               />
             </div>

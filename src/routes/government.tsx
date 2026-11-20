@@ -11,6 +11,7 @@ export const Route = createFileRoute("/government")({
           "Personal notes on public services that are easier to finish and honest about their sources.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.danielheiwig.com/government" }],
   }),
   component: Government,
 });

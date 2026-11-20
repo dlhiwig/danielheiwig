@@ -11,6 +11,7 @@ export const Route = createFileRoute("/writing")({
         content: "Essays on AI systems, digital government, and decisions by Daniel Heiwig.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.danielheiwig.com/writing" }],
   }),
   component: Writing,
 });

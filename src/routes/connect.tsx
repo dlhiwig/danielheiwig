@@ -12,6 +12,7 @@ export const Route = createFileRoute("/connect")({
         content: "Public profiles and a way to leave a note for Daniel Heiwig.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.danielheiwig.com/connect" }],
   }),
   component: Connect,
 });

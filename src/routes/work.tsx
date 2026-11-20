@@ -9,6 +9,7 @@ export const Route = createFileRoute("/work")({
       { title: "Work · Daniel Heiwig" },
       { name: "description", content: "Public projects and concepts by Daniel Heiwig." },
     ],
+    links: [{ rel: "canonical", href: "https://www.danielheiwig.com/work" }],
   }),
   component: Work,
 });

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /__grok/
+
+Sitemap: https://www.danielheiwig.com/sitemap.xml

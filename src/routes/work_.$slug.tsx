@@ -9,7 +9,13 @@ export const Route = createFileRoute("/work_/$slug")({
       meta: [
         { title: project ? `${project.title} · Daniel Heiwig` : "Work · Daniel Heiwig" },
         { name: "description", content: project?.summary ?? "Project" },
+        ...(!project || project.slug === "citrati"
+          ? [{ name: "robots", content: "noindex, follow" }]
+          : []),
       ],
+      links: project && project.slug !== "citrati"
+        ? [{ rel: "canonical", href: `https://www.danielheiwig.com/work/${project.slug}` }]
+        : [],
     };
   },
   component: CaseStudy,

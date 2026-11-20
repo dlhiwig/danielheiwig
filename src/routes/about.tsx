@@ -1,14 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Frame, Eyebrow } from "@/components/frame";
-import { belief, brandDescription, personSchema, portraitAlt, portraitSrc } from "@/lib/content";
+import { belief, personSchema, portraitAlt, portraitSrc } from "@/lib/content";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About | Daniel Heiwig" },
-      { name: "description", content: brandDescription },
+      { name: "description", content: "Daniel Heiwig's background in AI engineering, military leadership, responsible agent systems, digital government, and independent ventures." },
     ],
-    links: [{ rel: "canonical", href: "https://danielheiwig.com/about" }],
+    links: [{ rel: "canonical", href: "https://www.danielheiwig.com/about" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -62,6 +62,8 @@ function About() {
           alt={portraitAlt}
           width={1254}
           height={1254}
+          loading="lazy"
+          decoding="async"
           className="h-128 w-full rounded-3xl object-cover object-top md:col-span-5"
         />
         <div className="md:col-span-7">
