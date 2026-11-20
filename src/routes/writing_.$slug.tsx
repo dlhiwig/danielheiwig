@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Frame, Eyebrow } from "@/components/frame";
-import { essayBySlug } from "@/lib/content";
+import { essayBySlug, articleSchema } from "@/lib/content";
 
 export const Route = createFileRoute("/writing_/$slug")({
   head: ({ params }) => {
@@ -13,6 +13,9 @@ export const Route = createFileRoute("/writing_/$slug")({
       ],
       links: essay
         ? [{ rel: "canonical", href: `https://www.danielheiwig.com/writing/${essay.slug}` }]
+        : [],
+      scripts: essay
+        ? [{ type: "application/ld+json", children: JSON.stringify(articleSchema(essay)) }]
         : [],
     };
   },

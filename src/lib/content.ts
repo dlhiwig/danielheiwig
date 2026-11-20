@@ -249,3 +249,19 @@ export function websiteSchema() {
     publisher: { "@id": "https://www.danielheiwig.com/#person" },
   };
 }
+
+export function articleSchema(essay: Essay) {
+  const url = `https://www.danielheiwig.com/writing/${essay.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    headline: essay.title,
+    description: essay.dek,
+    url,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    author: { "@type": "Person", "@id": "https://www.danielheiwig.com/#person", name: "Daniel Heiwig" },
+    publisher: { "@type": "Person", "@id": "https://www.danielheiwig.com/#person", name: "Daniel Heiwig" },
+    inLanguage: "en-US",
+  };
+}

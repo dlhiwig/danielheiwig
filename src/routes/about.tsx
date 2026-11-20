@@ -12,7 +12,7 @@ export const Route = createFileRoute("/about")({
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify(personSchema("https://danielheiwig.com/about")),
+        children: JSON.stringify(personSchema("https://www.danielheiwig.com/about")),
       },
     ],
   }),
