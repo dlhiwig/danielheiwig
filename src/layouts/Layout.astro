@@ -2,9 +2,20 @@
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  imageAlt?: string;
 }
 
-const { title, description = "AI Engineer and Technology Leader specializing in enterprise artificial intelligence, agentic systems, and applied AI." } = Astro.props;
+const {
+  title,
+  description = "Daniel Heiwig explores AI engineering, digital government, leadership, and practical technology innovation.",
+  image,
+  imageAlt = "Daniel Heiwig"
+} = Astro.props;
+const site = Astro.site ?? new URL("https://danielheiwig.com");
+const canonical = new URL(Astro.url.pathname, site).toString();
+const fullTitle = title === "Home" ? "Daniel Heiwig | Data. Insight. AI. Impact." : `${title} | Daniel Heiwig`;
+const imageUrl = image ? new URL(image, site).toString() : undefined;
 ---
 
 <!doctype html>
@@ -14,8 +25,22 @@ const { title, description = "AI Engineer and Technology Leader specializing in 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | Daniel Heiwig</title>
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Daniel Heiwig" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {imageUrl && <meta property="og:image" content={imageUrl} />}
+    {imageUrl && <meta property="og:image:alt" content={imageAlt} />}
+    <meta name="twitter:card" content={imageUrl ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    {imageUrl && <meta name="twitter:image" content={imageUrl} />}
   </head>
   <body class="bg-white text-slate-800 antialiased">
     <header class="border-b border-slate-200">
@@ -36,6 +61,11 @@ const { title, description = "AI Engineer and Technology Leader specializing in 
     <footer class="border-t border-slate-200 mt-16">
       <div class="max-w-5xl mx-auto px-6 py-8 text-sm text-slate-500">
         <p>© {new Date().getFullYear()} Daniel Heiwig. All rights reserved.</p>
+        <nav class="mt-4 mb-4 flex flex-wrap gap-x-5 gap-y-2" aria-label="Social media">
+          <a href="https://www.linkedin.com/in/danielheiwig/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-700">LinkedIn</a>
+          <a href="https://github.com/dlhiwig" target="_blank" rel="noopener noreferrer" class="hover:text-blue-700">GitHub</a>
+          <a href="https://www.facebook.com/profile.php?id=61596691354369" target="_blank" rel="noopener noreferrer" class="hover:text-blue-700">Public Facebook</a>
+        </nav>
         <p class="mt-1">This is a personal website. The views and opinions presented herein are those of the author and do not necessarily represent the views of the Department of Defense or the Army. Appearance of, or reference to, any commercial products or services does not constitute DoD or Army endorsement of those products or services. The appearance of external hyperlinks does not constitute DoD or Army endorsement of the linked websites, or the information, products or services therein.</p>
       </div>
     </footer>
