@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 128 128">
-  <rect width="128" height="128" rx="16" fill="#0f172a"/>
-  <text x="64" y="76" text-anchor="middle" fill="white" font-family="system-ui" font-size="42" font-weight="600">DH</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="DH">
+  <rect width="32" height="32" rx="6" fill="#071422"/>
+  <path fill="#f5f1e8" d="M2.2 7h5.4c3.8 0 6.2 2.7 6.2 9s-2.4 9-6.2 9H2.2V7zm3.6 3.2v11.6h1.5c1.9 0 3-1.5 3-5.8s-1.1-5.8-3-5.8H5.8z"/>
+  <path fill="#f5f1e8" d="M17.2 7h3.4v6.6h4.2V7h3.4v18h-3.4v-8h-4.2v8h-3.4V7z"/>
 </svg>
