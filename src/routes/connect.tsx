@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { Frame, Eyebrow } from "@/components/frame";
 import { profiles } from "@/lib/content";
@@ -20,17 +20,19 @@ export const Route = createFileRoute("/connect")({
 });
 
 function Connect() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [opened, setOpened] = useState(false);
 
   function onSubmit(event: React.FormEvent) {
     event.preventDefault();
     const subject = encodeURIComponent(`Website contact from ${name.trim()}`);
     const body = encodeURIComponent(`${message.trim()}\n\n${name.trim()}\n${email.trim()}`);
-    window.location.href = `mailto:${INBOX}?subject=${subject}&body=${body}`;
-    setOpened(true);
+    const anchor = document.createElement("a");
+    anchor.href = `mailto:${INBOX}?subject=${subject}&body=${body}`;
+    anchor.click();
+    void navigate({ to: "/thank-you" });
   }
 
   return (
@@ -115,15 +117,9 @@ function Connect() {
           >
             Send
           </button>
-          {opened ? (
-            <p className="mt-4 text-sm text-ink" role="status">
-              Your email app should be open with this message addressed to me. Send it there.
-            </p>
-          ) : (
-            <p className="mt-4 text-sm text-slate">
-              Send opens your email app so the message can reach my inbox.
-            </p>
-          )}
+          <p className="mt-4 text-sm text-slate">
+            Send opens your email app, then a confirmation page.
+          </p>
         </form>
       </section>
     </Frame>

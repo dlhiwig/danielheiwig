@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ConnectRouteImport } from './routes/connect'
 import { Route as GovernmentRouteImport } from './routes/government'
+import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as VenturesRouteImport } from './routes/ventures'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as WritingRouteImport } from './routes/writing'
@@ -37,6 +38,11 @@ const ConnectRoute = ConnectRouteImport.update({
 const GovernmentRoute = GovernmentRouteImport.update({
   id: '/government',
   path: '/government',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ThankYouRoute = ThankYouRouteImport.update({
+  id: '/thank-you',
+  path: '/thank-you',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VenturesRoute = VenturesRouteImport.update({
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
   '/government': typeof GovernmentRoute
+  '/thank-you': typeof ThankYouRoute
   '/ventures': typeof VenturesRoute
   '/work': typeof WorkRoute
   '/writing': typeof WritingRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
   '/government': typeof GovernmentRoute
+  '/thank-you': typeof ThankYouRoute
   '/ventures': typeof VenturesRoute
   '/work': typeof WorkRoute
   '/writing': typeof WritingRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
   '/government': typeof GovernmentRoute
+  '/thank-you': typeof ThankYouRoute
   '/ventures': typeof VenturesRoute
   '/work': typeof WorkRoute
   '/writing': typeof WritingRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/connect'
     | '/government'
+    | '/thank-you'
     | '/ventures'
     | '/work'
     | '/writing'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/connect'
     | '/government'
+    | '/thank-you'
     | '/ventures'
     | '/work'
     | '/writing'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/connect'
     | '/government'
+    | '/thank-you'
     | '/ventures'
     | '/work'
     | '/writing'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ConnectRoute: typeof ConnectRoute
   GovernmentRoute: typeof GovernmentRoute
+  ThankYouRoute: typeof ThankYouRoute
   VenturesRoute: typeof VenturesRoute
   WorkRoute: typeof WorkRoute
   WritingRoute: typeof WritingRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/government'
       fullPath: '/government'
       preLoaderRoute: typeof GovernmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/thank-you': {
+      id: '/thank-you'
+      path: '/thank-you'
+      fullPath: '/thank-you'
+      preLoaderRoute: typeof ThankYouRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ventures': {
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ConnectRoute: ConnectRoute,
   GovernmentRoute: GovernmentRoute,
+  ThankYouRoute: ThankYouRoute,
   VenturesRoute: VenturesRoute,
   WorkRoute: WorkRoute,
   WritingRoute: WritingRoute,
