@@ -44,8 +44,9 @@ function Connect() {
             Follow the public work. Write if it’s useful.
           </h1>
           <p className="mt-5 text-lg text-mist">
-            A message sent here comes to me. This site is personal. It does not speak
-            for the Army or the Department of Defense.
+            Send opens your email app with the note addressed to me. It is not delivered
+            until you send it from there. This site is personal. It does not speak for
+            the Army or the Department of Defense.
           </p>
         </div>
       </section>

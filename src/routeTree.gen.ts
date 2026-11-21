@@ -13,8 +13,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ConnectRouteImport } from './routes/connect'
 import { Route as GovernmentRouteImport } from './routes/government'
+import { Route as HeiwigPressRouteImport } from './routes/heiwig-press'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
+import { Route as TheReasonsWhyRouteImport } from './routes/the-reasons-why'
 import { Route as VenturesRouteImport } from './routes/ventures'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as WritingRouteImport } from './routes/writing'
@@ -41,6 +43,11 @@ const GovernmentRoute = GovernmentRouteImport.update({
   path: '/government',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HeiwigPressRoute = HeiwigPressRouteImport.update({
+  id: '/heiwig-press',
+  path: '/heiwig-press',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -49,6 +56,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const ThankYouRoute = ThankYouRouteImport.update({
   id: '/thank-you',
   path: '/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TheReasonsWhyRoute = TheReasonsWhyRouteImport.update({
+  id: '/the-reasons-why',
+  path: '/the-reasons-why',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VenturesRoute = VenturesRouteImport.update({
@@ -82,8 +94,10 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
   '/government': typeof GovernmentRoute
+  '/heiwig-press': typeof HeiwigPressRoute
   '/privacy': typeof PrivacyRoute
   '/thank-you': typeof ThankYouRoute
+  '/the-reasons-why': typeof TheReasonsWhyRoute
   '/ventures': typeof VenturesRoute
   '/work': typeof WorkRoute
   '/writing': typeof WritingRoute
@@ -95,8 +109,10 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
   '/government': typeof GovernmentRoute
+  '/heiwig-press': typeof HeiwigPressRoute
   '/privacy': typeof PrivacyRoute
   '/thank-you': typeof ThankYouRoute
+  '/the-reasons-why': typeof TheReasonsWhyRoute
   '/ventures': typeof VenturesRoute
   '/work': typeof WorkRoute
   '/writing': typeof WritingRoute
@@ -109,8 +125,10 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/connect': typeof ConnectRoute
   '/government': typeof GovernmentRoute
+  '/heiwig-press': typeof HeiwigPressRoute
   '/privacy': typeof PrivacyRoute
   '/thank-you': typeof ThankYouRoute
+  '/the-reasons-why': typeof TheReasonsWhyRoute
   '/ventures': typeof VenturesRoute
   '/work': typeof WorkRoute
   '/writing': typeof WritingRoute
@@ -124,8 +142,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/connect'
     | '/government'
+    | '/heiwig-press'
     | '/privacy'
     | '/thank-you'
+    | '/the-reasons-why'
     | '/ventures'
     | '/work'
     | '/writing'
@@ -137,8 +157,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/connect'
     | '/government'
+    | '/heiwig-press'
     | '/privacy'
     | '/thank-you'
+    | '/the-reasons-why'
     | '/ventures'
     | '/work'
     | '/writing'
@@ -150,8 +172,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/connect'
     | '/government'
+    | '/heiwig-press'
     | '/privacy'
     | '/thank-you'
+    | '/the-reasons-why'
     | '/ventures'
     | '/work'
     | '/writing'
@@ -164,8 +188,10 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ConnectRoute: typeof ConnectRoute
   GovernmentRoute: typeof GovernmentRoute
+  HeiwigPressRoute: typeof HeiwigPressRoute
   PrivacyRoute: typeof PrivacyRoute
   ThankYouRoute: typeof ThankYouRoute
+  TheReasonsWhyRoute: typeof TheReasonsWhyRoute
   VenturesRoute: typeof VenturesRoute
   WorkRoute: typeof WorkRoute
   WritingRoute: typeof WritingRoute
@@ -203,6 +229,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GovernmentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/heiwig-press': {
+      id: '/heiwig-press'
+      path: '/heiwig-press'
+      fullPath: '/heiwig-press'
+      preLoaderRoute: typeof HeiwigPressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -215,6 +248,13 @@ declare module '@tanstack/react-router' {
       path: '/thank-you'
       fullPath: '/thank-you'
       preLoaderRoute: typeof ThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/the-reasons-why': {
+      id: '/the-reasons-why'
+      path: '/the-reasons-why'
+      fullPath: '/the-reasons-why'
+      preLoaderRoute: typeof TheReasonsWhyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ventures': {
@@ -260,8 +300,10 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ConnectRoute: ConnectRoute,
   GovernmentRoute: GovernmentRoute,
+  HeiwigPressRoute: HeiwigPressRoute,
   PrivacyRoute: PrivacyRoute,
   ThankYouRoute: ThankYouRoute,
+  TheReasonsWhyRoute: TheReasonsWhyRoute,
   VenturesRoute: VenturesRoute,
   WorkRoute: WorkRoute,
   WritingRoute: WritingRoute,

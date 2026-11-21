@@ -24,8 +24,8 @@ function ThankYou() {
           <Eyebrow>Contact</Eyebrow>
           <h1 className="mt-4 font-display text-5xl leading-tight md:text-6xl">Thank you.</h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-mist">
-            Your email app should be open with the message addressed to me. Send it
-            there, and I’ll read it.
+            This is not a delivery receipt. If your email app opened, send the message
+            there. I will read it after it arrives.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link

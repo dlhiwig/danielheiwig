@@ -7,6 +7,7 @@ const links = [
   { to: "/about", label: "About" },
   { to: "/work", label: "Work" },
   { to: "/writing", label: "Writing" },
+  { to: "/the-reasons-why", label: "Book" },
   { to: "/connect", label: "Connect" },
 ] as const;
 
@@ -100,6 +101,9 @@ export function Frame({ children }: { children: ReactNode }) {
             </Link>
             <Link to="/ventures" className="hover:text-paper">
               Citrati.ai & ventures
+            </Link>
+            <Link to="/heiwig-press" className="hover:text-paper">
+              Heiwig Press
             </Link>
             <Link to="/connect" className="hover:text-paper">
               Connect
