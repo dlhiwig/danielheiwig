@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Frame, Eyebrow } from "@/components/frame";
 import { profiles } from "@/lib/content";
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/connect")({
 });
 
 function Connect() {
-  const navigate = useNavigate();
+  const [draftOpened, setDraftOpened] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -32,7 +32,7 @@ function Connect() {
     const anchor = document.createElement("a");
     anchor.href = `mailto:${INBOX}?subject=${subject}&body=${body}`;
     anchor.click();
-    void navigate({ to: "/thank-you" });
+    setDraftOpened(true);
   }
 
   return (
@@ -44,8 +44,8 @@ function Connect() {
             Follow the public work. Write if it’s useful.
           </h1>
           <p className="mt-5 text-lg text-mist">
-            A message sent here comes to me. This site is personal. It does not speak
-            for the Army or the Department of Defense.
+            You can contact me through your own email application or follow the public
+            work through the links below. This site is personal, not an official Army channel.
           </p>
         </div>
       </section>
@@ -115,10 +115,23 @@ function Connect() {
             type="submit"
             className="mt-4 inline-flex h-12 items-center rounded-full bg-ink px-6 text-sm text-paper"
           >
-            Send
+            Open email draft
           </button>
+          {draftOpened ? (
+            <p className="mt-4 text-sm text-ink" role="status">
+              Your email application should open with a draft. You still need to press Send
+              there. Nothing has been sent by this website.
+            </p>
+          ) : (
+            <p className="mt-4 text-sm text-slate">
+              This button opens a draft in your email app. The site does not send messages directly.
+            </p>
+          )}
           <p className="mt-4 text-sm text-slate">
-            Send opens your email app, then a confirmation page.
+            No email app? Write directly to{" "}
+            <a href="mailto:daniel.heiwig@outlook.com" className="text-ink underline underline-offset-4">
+              daniel.heiwig@outlook.com
+            </a>.
           </p>
         </form>
       </section>
