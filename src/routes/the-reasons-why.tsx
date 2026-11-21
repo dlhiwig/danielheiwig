@@ -15,8 +15,11 @@ const bookSchema = {
     name: "Heiwig Press",
     url: "https://www.danielheiwig.com/heiwig-press",
   },
+  isbn: "9798189321207",
+  bookEdition: "1",
+  image: "https://www.danielheiwig.com/the-reasons-why-cover.jpg",
   description:
-    "A leadership instrument rebuilt from a 1984 Army War College anthology on courage, command, and sacrifice. Coming soon.",
+    "First edition. A leadership instrument rebuilt from a 1984 Army War College anthology on courage, command, and sacrifice. Independently published by Heiwig Press. Coming soon.",
   inLanguage: "en",
 };
 
@@ -52,8 +55,12 @@ export const Route = createFileRoute("/the-reasons-why")({
       {
         name: "description",
         content:
-          "The Reasons Why rebuilds a 1984 Army War College anthology into a leadership instrument for officers, NCOs, cadets, and civilian leaders. Coming soon from Heiwig Press.",
+          "The Reasons Why, first edition, ISBN 9798189321207. Independently published by Heiwig Press. Coming soon.",
       },
+      { property: "og:image", content: "https://www.danielheiwig.com/the-reasons-why-leadership-at-dawn.jpg" },
+      { property: "og:image:width", content: "1672" },
+      { property: "og:image:height", content: "941" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "https://www.danielheiwig.com/the-reasons-why" }],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(bookSchema) }],
@@ -77,7 +84,10 @@ function BookPage() {
             <p className="mt-4 text-gold">
               A Leadership Instrument for the Sword and the Spirit
             </p>
-            <p className="mt-4 text-sm text-mist">Daniel Heiwig · Heiwig Press</p>
+            <p className="mt-4 text-sm text-mist">
+              Daniel Heiwig · First edition · Independently published by Heiwig Press
+            </p>
+            <p className="mt-2 text-sm tracking-wide text-gold">ISBN 9798189321207</p>
             <p className="mt-6 max-w-xl text-mist">
               Kindle and paperback are not linked yet. The buttons will go to Amazon
               when the listing is live. Until then, leave an email and I will send the
@@ -98,6 +108,25 @@ function BookPage() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-cream">
+        <div className="mx-auto max-w-6xl px-5 py-12">
+          <figure>
+            <img
+              src="/the-reasons-why-leadership-at-dawn-1200w.webp"
+              srcSet="/the-reasons-why-leadership-at-dawn-1200w.webp 1200w, /the-reasons-why-leadership-at-dawn.webp 1672w"
+              alt="Leadership at Dawn. Promotional image for The Reasons Why: the book on a table, a dawn ridge, and the words leadership, doctrine, character, and service."
+              width={1672}
+              height={941}
+              className="w-full rounded-2xl"
+            />
+            <figcaption className="mt-3 text-sm text-slate">
+              Leadership at Dawn. A personal promotional image. It is not an official
+              Army or Department of Defense photograph or endorsement.
+            </figcaption>
+          </figure>
         </div>
       </section>
 

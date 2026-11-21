@@ -102,19 +102,13 @@ export function Signup({
 
 export function BookCover() {
   return (
-    <div
-      className="mx-auto flex aspect-[2/3] w-full max-w-sm flex-col justify-between rounded-sm border border-gold/70 bg-navy p-6 text-paper shadow-2xl"
-      role="img"
-      aria-label="Navy and gold cover treatment for The Reasons Why, by Daniel Heiwig. Heiwig Press. This is not a photograph of the printed jacket."
-    >
-      <p className="text-xs tracking-[0.25em] text-gold">HEIWIG PRESS</p>
-      <div>
-        <p className="font-display text-4xl leading-tight md:text-5xl">The Reasons Why</p>
-        <p className="mt-4 text-sm leading-relaxed text-gold">
-          A Leadership Instrument for the Sword and the Spirit
-        </p>
-      </div>
-      <p className="text-sm tracking-wide">Daniel Heiwig</p>
-    </div>
+    <img
+      src="/the-reasons-why-cover-700w.webp"
+      srcSet="/the-reasons-why-cover-700w.webp 700w, /the-reasons-why-cover.webp 971w"
+      alt="Cover of The Reasons Why by Daniel Heiwig. A navy field, gold title, and a gold sword crossed with a quill. First edition, Heiwig Press."
+      width={971}
+      height={1619}
+      className="mx-auto w-full max-w-sm rounded-sm shadow-2xl"
+    />
   );
 }

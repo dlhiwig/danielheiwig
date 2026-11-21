@@ -33,12 +33,13 @@ function Press() {
       </section>
       <section className="mx-auto grid max-w-6xl gap-10 px-5 py-16 md:grid-cols-2">
         <article className="rounded-3xl border border-sand bg-cream p-6">
-          <p className="text-xs tracking-wide text-gold uppercase">Book 1 · Coming soon</p>
+          <p className="text-xs tracking-wide text-gold uppercase">
+            Book 1 · First edition · Coming soon
+          </p>
           <h2 className="mt-3 font-display text-4xl text-ink">The Reasons Why</h2>
           <p className="mt-4 leading-relaxed text-slate">
-            A leadership instrument rebuilt from a 1984 Army War College anthology.
-            Courage, command, and sacrifice, set up so a leader can use the chapter
-            rather than only admire it.
+            Independently published by Heiwig Press. ISBN 9798189321207. A
+            leadership instrument rebuilt from a 1984 Army War College anthology.
           </p>
           <Link
             to="/the-reasons-why"

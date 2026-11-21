@@ -75,24 +75,37 @@ function Home() {
       </section>
 
       <section className="border-b border-sand bg-cream">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 md:grid-cols-12">
-          <div className="md:col-span-3">
-            <BookCover />
-          </div>
-          <div className="md:col-span-9">
-            <p className="text-xs tracking-wide text-gold uppercase">Coming soon · Heiwig Press</p>
-            <h2 className="mt-3 font-display text-4xl text-ink">The Reasons Why</h2>
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate">
-              My book rebuilds a 1984 Army War College anthology on courage, command,
-              and sacrifice into a working leadership tool for officers, NCOs, cadets,
-              and anyone who leads people through hard things.
-            </p>
-            <Link
-              to="/the-reasons-why"
-              className="mt-6 inline-flex h-12 items-center rounded-full bg-ink px-6 text-sm text-paper"
-            >
-              Get the book
-            </Link>
+        <div className="mx-auto max-w-6xl px-5 py-12">
+          <img
+            src="/the-reasons-why-leadership-at-dawn-1200w.webp"
+            srcSet="/the-reasons-why-leadership-at-dawn-1200w.webp 1200w, /the-reasons-why-leadership-at-dawn.webp 1672w"
+            alt="Leadership at Dawn, a promotional image for The Reasons Why by Daniel Heiwig."
+            width={1672}
+            height={941}
+            className="w-full rounded-2xl"
+          />
+          <div className="mt-8 grid items-center gap-8 md:grid-cols-12">
+            <div className="md:col-span-3">
+              <BookCover />
+            </div>
+            <div className="md:col-span-9">
+              <p className="text-xs tracking-wide text-gold uppercase">
+                First edition · Coming soon · Heiwig Press
+              </p>
+              <h2 className="mt-3 font-display text-4xl text-ink">The Reasons Why</h2>
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate">
+                My book rebuilds a 1984 Army War College anthology on courage, command,
+                and sacrifice into a working leadership tool for officers, NCOs, cadets,
+                and anyone who leads people through hard things.
+              </p>
+              <p className="mt-3 text-sm text-slate">ISBN 9798189321207</p>
+              <Link
+                to="/the-reasons-why"
+                className="mt-6 inline-flex h-12 items-center rounded-full bg-ink px-6 text-sm text-paper"
+              >
+                Get the book
+              </Link>
+            </div>
           </div>
         </div>
       </section>
