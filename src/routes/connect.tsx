@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Frame, Eyebrow } from "@/components/frame";
-import { sendContact } from "@/lib/contact";
 import { profiles } from "@/lib/content";
+
+const INBOX = "daniel.heiwig@outlook.com";
 
 export const Route = createFileRoute("/connect")({
   head: () => ({
@@ -22,29 +23,14 @@ function Connect() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [website, setWebsite] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const [error, setError] = useState("");
+  const [opened, setOpened] = useState(false);
 
-  async function onSubmit(event: React.FormEvent) {
+  function onSubmit(event: React.FormEvent) {
     event.preventDefault();
-    setStatus("sending");
-    setError("");
-    try {
-      const result = await sendContact({ data: { name, email, message, website } });
-      if (!result.ok) {
-        setStatus("error");
-        setError(result.error);
-        return;
-      }
-      setStatus("sent");
-      setName("");
-      setEmail("");
-      setMessage("");
-    } catch {
-      setStatus("error");
-      setError("It didn't send. Try again in a moment.");
-    }
+    const subject = encodeURIComponent(`Website contact from ${name.trim()}`);
+    const body = encodeURIComponent(`${message.trim()}\n\n${name.trim()}\n${email.trim()}`);
+    window.location.href = `mailto:${INBOX}?subject=${subject}&body=${body}`;
+    setOpened(true);
   }
 
   return (
@@ -123,35 +109,20 @@ function Connect() {
             rows={5}
             className="mt-2 w-full rounded-xl border border-sand bg-cream px-4 py-3 text-ink"
           />
-          <label className="sr-only" htmlFor="website">
-            Website
-          </label>
-          <input
-            id="website"
-            name="website"
-            value={website}
-            onChange={(event) => setWebsite(event.target.value)}
-            tabIndex={-1}
-            autoComplete="off"
-            className="sr-only"
-          />
           <button
             type="submit"
-            disabled={status === "sending"}
-            className="mt-4 inline-flex h-12 items-center rounded-full bg-ink px-6 text-sm text-paper disabled:opacity-60"
+            className="mt-4 inline-flex h-12 items-center rounded-full bg-ink px-6 text-sm text-paper"
           >
-            {status === "sending" ? "Sending" : "Send"}
+            Send
           </button>
-          {status === "sent" ? (
+          {opened ? (
             <p className="mt-4 text-sm text-ink" role="status">
-              Sent. I’ll read it in my inbox.
-            </p>
-          ) : status === "error" ? (
-            <p className="mt-4 text-sm text-ink" role="alert">
-              {error}
+              Your email app should be open with this message addressed to me. Send it there.
             </p>
           ) : (
-            <p className="mt-4 text-sm text-slate">Your email is only used to reply.</p>
+            <p className="mt-4 text-sm text-slate">
+              Send opens your email app so the message can reach my inbox.
+            </p>
           )}
         </form>
       </section>
