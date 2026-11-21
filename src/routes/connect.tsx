@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Frame, Eyebrow } from "@/components/frame";
+import { sendContact } from "@/lib/contact";
 import { profiles } from "@/lib/content";
 
 export const Route = createFileRoute("/connect")({
@@ -9,7 +10,7 @@ export const Route = createFileRoute("/connect")({
       { title: "Connect · Daniel Heiwig" },
       {
         name: "description",
-        content: "Public profiles and a way to leave a note for Daniel Heiwig.",
+        content: "Public profiles and a contact form for Daniel Heiwig.",
       },
     ],
     links: [{ rel: "canonical", href: "https://www.danielheiwig.com/connect" }],
@@ -19,27 +20,31 @@ export const Route = createFileRoute("/connect")({
 
 function Connect() {
   const [name, setName] = useState("");
-  const [note, setNote] = useState("");
-  const [saved, setSaved] = useState(false);
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState("");
 
-  function onSubmit(event: React.FormEvent) {
+  async function onSubmit(event: React.FormEvent) {
     event.preventDefault();
-    const entry = { name: name.trim(), note: note.trim(), at: new Date().toISOString() };
-    if (!entry.note) return;
-    const prior = window.localStorage.getItem("dh-notes");
-    let list: typeof entry[] = [];
-    if (prior) {
-      try {
-        list = JSON.parse(prior) as typeof entry[];
-      } catch {
-        list = [];
+    setStatus("sending");
+    setError("");
+    try {
+      const result = await sendContact({ data: { name, email, message, website } });
+      if (!result.ok) {
+        setStatus("error");
+        setError(result.error);
+        return;
       }
+      setStatus("sent");
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch {
+      setStatus("error");
+      setError("It didn't send. Try again in a moment.");
     }
-    list.unshift(entry);
-    window.localStorage.setItem("dh-notes", JSON.stringify(list.slice(0, 20)));
-    setSaved(true);
-    setName("");
-    setNote("");
   }
 
   return (
@@ -51,8 +56,8 @@ function Connect() {
             Follow the public work. Write if it’s useful.
           </h1>
           <p className="mt-5 text-lg text-mist">
-            The best next step is a public profile. A note stays in this browser only —
-            there is no inbox wired up yet.
+            A message sent here comes to me. This site is personal. It does not speak
+            for the Army or the Department of Defense.
           </p>
         </div>
       </section>
@@ -80,40 +85,73 @@ function Connect() {
           </p>
         </div>
         <form onSubmit={onSubmit} className="rounded-3xl border border-sand bg-paper p-6">
-          <h2 className="font-display text-3xl text-ink">Leave a note</h2>
+          <h2 className="font-display text-3xl text-ink">Contact</h2>
           <label className="mt-6 block text-sm text-slate" htmlFor="name">
             Name
           </label>
           <input
             id="name"
+            name="name"
+            required
             value={name}
             onChange={(event) => setName(event.target.value)}
-            className="mt-2 h-12 w-full rounded-xl border border-sand bg-cream px-4 text-ink"
             autoComplete="name"
+            className="mt-2 h-12 w-full rounded-xl border border-sand bg-cream px-4 text-ink"
           />
-          <label className="mt-4 block text-sm text-slate" htmlFor="note">
-            Note
+          <label className="mt-4 block text-sm text-slate" htmlFor="email">
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            autoComplete="email"
+            className="mt-2 h-12 w-full rounded-xl border border-sand bg-cream px-4 text-ink"
+          />
+          <label className="mt-4 block text-sm text-slate" htmlFor="message">
+            Message
           </label>
           <textarea
-            id="note"
+            id="message"
+            name="message"
             required
-            value={note}
-            onChange={(event) => setNote(event.target.value)}
+            value={message}
+            onChange={(event) => setMessage(event.target.value)}
             rows={5}
             className="mt-2 w-full rounded-xl border border-sand bg-cream px-4 py-3 text-ink"
           />
+          <label className="sr-only" htmlFor="website">
+            Website
+          </label>
+          <input
+            id="website"
+            name="website"
+            value={website}
+            onChange={(event) => setWebsite(event.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+            className="sr-only"
+          />
           <button
             type="submit"
-            className="mt-4 inline-flex h-12 items-center rounded-full bg-ink px-6 text-sm text-paper"
+            disabled={status === "sending"}
+            className="mt-4 inline-flex h-12 items-center rounded-full bg-ink px-6 text-sm text-paper disabled:opacity-60"
           >
-            Save on this device
+            {status === "sending" ? "Sending" : "Send"}
           </button>
-          {saved ? (
+          {status === "sent" ? (
             <p className="mt-4 text-sm text-ink" role="status">
-              Saved in this browser. It was not sent anywhere.
+              Sent. I’ll read it in my inbox.
+            </p>
+          ) : status === "error" ? (
+            <p className="mt-4 text-sm text-ink" role="alert">
+              {error}
             </p>
           ) : (
-            <p className="mt-4 text-sm text-slate">Notes never leave this device.</p>
+            <p className="mt-4 text-sm text-slate">Your email is only used to reply.</p>
           )}
         </form>
       </section>
