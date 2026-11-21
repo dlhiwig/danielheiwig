@@ -104,6 +104,9 @@ export function Frame({ children }: { children: ReactNode }) {
             <Link to="/connect" className="hover:text-paper">
               Connect
             </Link>
+            <Link to="/privacy" className="hover:text-paper">
+              Privacy
+            </Link>
           </div>
           <p className="text-sm text-paper">Personal capacity. Not an official site.</p>
         </div>
