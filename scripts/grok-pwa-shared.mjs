@@ -45,6 +45,7 @@ function unescapeHtml(value) {
     .replaceAll("&lt;", "<")
     .replaceAll("&gt;", ">")
     .replaceAll("&quot;", '"')
+    .replace(/&#x27;/gi, "'")
     .replaceAll("&#39;", "'")
     .replaceAll("&amp;", "&");
 }
