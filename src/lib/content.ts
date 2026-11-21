@@ -143,7 +143,7 @@ export const essays: Essay[] = [
 export const brandTitle = "Daniel Heiwig | Data. Insight. AI. Impact.";
 
 export const brandDescription =
-  "Explore Daniel Heiwig's work in AI engineering, autonomous agents, digital government, technology leadership, and independently developed projects.";
+  "Daniel Heiwig — AI engineer and technology leader. Data. Insight. AI. Impact. Practical AI, digital government, and leadership, in a personal capacity.";
 
 export const portraitSrc = "/daniel-heiwig-ai-engineering.jpg";
 
@@ -199,13 +199,13 @@ export const profiles = [
     label: "Heiwig.org",
     href: "https://heiwig.org",
     note: "Nonprofit, separate from this site",
-    sameAs: false,
+    sameAs: true,
   },
   {
     label: "WhatsApp",
     href: "https://wa.me/13174321812",
     note: "Public page action",
-    sameAs: false,
+    sameAs: true,
   },
 ];
 

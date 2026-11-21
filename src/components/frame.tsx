@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
-import { disclaimer, profiles } from "@/lib/content";
+import { disclaimer, portraitAlt, profiles } from "@/lib/content";
 
 const links = [
   { to: "/about", label: "About" },
@@ -79,15 +79,19 @@ export function Frame({ children }: { children: ReactNode }) {
             <p className="font-display text-2xl text-paper">Daniel Heiwig</p>
             <p className="mt-2 text-sm text-gold">Data. Insight. AI. Impact.</p>
             <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-              {profiles
-                .filter((item) => ["Facebook", "LinkedIn", "GitHub", "X"].includes(item.label))
-                .map((item) => (
-                  <li key={item.href}>
-                    <a href={item.href} target="_blank" rel="me noopener noreferrer" className="hover:text-paper">
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
+              {profiles.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="me noopener noreferrer"
+                    className="hover:text-paper"
+                    title={item.note}
+                  >
+                    {item.label === "YouTube" ? `YouTube ${item.note}` : item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="flex flex-col gap-2 text-sm">
@@ -108,6 +112,34 @@ export function Frame({ children }: { children: ReactNode }) {
         </div>
       </footer>
     </div>
+  );
+}
+
+export function Portrait({
+  priority = false,
+  className,
+}: {
+  priority?: boolean;
+  className: string;
+}) {
+  return (
+    <picture>
+      <source
+        type="image/webp"
+        srcSet="/daniel-heiwig-ai-engineering-800w.webp 800w, /daniel-heiwig-ai-engineering.webp 1254w"
+        sizes="(min-width: 768px) 28rem, 100vw"
+      />
+      <img
+        src="/daniel-heiwig-ai-engineering-800w.jpg"
+        srcSet="/daniel-heiwig-ai-engineering-800w.jpg 800w, /daniel-heiwig-ai-engineering.jpg 1254w"
+        alt={portraitAlt}
+        width={1254}
+        height={1254}
+        fetchPriority={priority ? "high" : undefined}
+        decoding="async"
+        className={className}
+      />
+    </picture>
   );
 }
 

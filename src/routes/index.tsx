@@ -1,14 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { Frame, Eyebrow } from "@/components/frame";
+import { Frame, Eyebrow, Portrait } from "@/components/frame";
 import {
   belief,
   brandDescription,
   brandTitle,
   essays,
   websiteSchema,
-  portraitAlt,
-  portraitSrc,
   projects,
   publicPage,
 } from "@/lib/content";
@@ -69,16 +67,7 @@ function Home() {
           </div>
           <div className="mx-auto w-full max-w-md">
             <div className="overflow-hidden rounded-3xl border border-line bg-deep shadow-2xl">
-              <img
-                src={portraitSrc}
-                alt={portraitAlt}
-                width={1254}
-                height={1254}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                className="h-112 w-full object-cover object-top md:h-128"
-              />
+              <Portrait priority className="h-112 w-full object-cover object-top md:h-128" />
             </div>
           </div>
         </div>

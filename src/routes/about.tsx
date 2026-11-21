@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Frame, Eyebrow } from "@/components/frame";
-import { belief, personSchema, portraitAlt, portraitSrc } from "@/lib/content";
+import { Frame, Eyebrow, Portrait } from "@/components/frame";
+import { belief, personSchema } from "@/lib/content";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -57,15 +57,7 @@ function About() {
       </section>
 
       <section className="mx-auto grid max-w-6xl items-start gap-10 px-5 py-16 md:grid-cols-12">
-        <img
-          src={portraitSrc}
-          alt={portraitAlt}
-          width={1254}
-          height={1254}
-          loading="lazy"
-          decoding="async"
-          className="h-128 w-full rounded-3xl object-cover object-top md:col-span-5"
-        />
+        <Portrait className="h-128 w-full rounded-3xl object-cover object-top md:col-span-5" />
         <div className="md:col-span-7">
           <p className="text-xs tracking-wide text-gold uppercase">A few words</p>
           <h2 className="mt-3 font-display text-4xl text-ink">The story behind the work.</h2>
